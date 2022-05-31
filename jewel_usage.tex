@@ -10,6 +10,14 @@
 \title{Usage of JEWEL generator}
 \author{Jinghong Yang}
 
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
 \begin{document}
 
 \begin{frame}
@@ -37,21 +45,62 @@
   \end{scriptsize}
  \end{block}
 
- \begin{block}{\href{https://lhapdf.hepforge.org/lhapdf5/manual\#tth_sEcA}{Download PDF sets} }
+ \begin{block}{\href{https://lhapdf.hepforge.org/lhapdf5/manual\#tth_sEcA}{Download PDF sets (e.g. 5.9.1)} }
  \begin{scriptsize}
   \url{https://lhapdf.hepforge.org/downloads/?f=pdfsets/5.9.1/EPS09LOR_208.LHgrid}
-  \url{https://lhapdf.hepforge.org/downloads?f=pdfsets/5.9.1//cteq6ll.LHpdf}
+  \url{https://lhapdf.hepforge.org/downloads?f=pdfsets/5.9.1//cteq6ll.LHpdf}\\
 \end{scriptsize}
- \end{block}
+\begin{footnotesize}
+Put them in (lhapdf path)\textit{/share/lhapdf/PDFsets/}
+\end{footnotesize}
+\end{block}
+
+\begin{tiny}
+\href{https://www.jyu.fi/science/en/physics/research/highenergy/urhic/npdfs/eps09}{alternative}
+\end{tiny}
 
 
 \end{frame}
 
+\begin{frame}
+ \frametitle{Compiling JEWEL}
+ \begin{block}{Modify Makefile}
+ LHAPDF\_PATH := (your lhapdf install path)/lib/
+ \end{block}
+
+ \begin{block}{Modifying your .bashrc or .zshrc}
+ export LD\_LIBRARY\_PATH=/.../lhapdf-5.x.y/lib:\$LD\_LIBRARY\_PATH
+ export LHAPATH=/.../lhapdf-5.x.y/share/lhapdf/PDFsets
+ \end{block}
+\end{frame}
+
+
 \section{Data generation}
+\begin{frame}
+\frametitle{Run JEWEL}
+Now you have two binaries: jewel-2.2.0-vac and jewel-2.2.0-simple
+\end{frame}
+
+\section{Generate gluon and quark jets}
 
 \section{Data processing using RIVET}
 
-\section{Generate gluon and quark jets}
+\begin{frame}
+ \frametitle{RIVET installation}
+ % mention apptainer vs native install vs docker
+\end{frame}
+
+\begin{frame}
+ \frametitle{Using apptainer or docker}
+\end{frame}
+
+% if have time, talk a little bit more about native install
+
+% mention jewel mkfifo
+\begin{frame}
+ \frametitle{Using named pipe}
+\end{frame}
+
 
 \section{Troubleshooting}
 

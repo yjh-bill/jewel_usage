@@ -78,10 +78,35 @@ Put them in (lhapdf path)\textit{/share/lhapdf/PDFsets/}
 \section{Data generation}
 \begin{frame}
 \frametitle{Run JEWEL}
-Now you have two binaries: jewel-2.2.0-vac and jewel-2.2.0-simple
+\begin{itemize}
+ \item Now you have two binaries: jewel-2.2.0-vac and jewel-2.2.0-simple
+ \item ./jewel-2.2.0-vac $\langle$configuration file$\rangle$
+ \item ./jewel-2.2.0-simple $\langle$configuration file$\rangle$
+ \item \href{https://arxiv.org/pdf/1311.0048.pdf}{Documentation}
+\end{itemize}
+
+\begin{alertblock}{Caution}
+Watch out for xsecs.dat, pdf.dat, and splitint.
+
+If you change physical parameters, delete these files before you run JEWEL again.
+\end{alertblock}
+
+
+
 \end{frame}
 
 \section{Generate gluon and quark jets}
+
+\begin{frame}
+ \begin{itemize}
+  \item Show routine initpythia in jewel-2.2.0.f (roughly line 800)
+  \item \href{https://pythia.org/download/pythia6/lutp0613man2.pdf}{Pythia 6 Documentation} (See pages 140, 145, and 195)
+ \end{itemize}
+
+%  \begin{co
+
+\end{frame}
+
 
 \section{Data processing using RIVET}
 

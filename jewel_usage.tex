@@ -45,7 +45,7 @@
   \end{scriptsize}
  \end{block}
 
- \begin{block}{\href{https://lhapdf.hepforge.org/lhapdf5/manual\#tth_sEcA}{Download PDF sets (e.g. 5.9.1)} }
+ \begin{exampleblock}{\href{https://lhapdf.hepforge.org/lhapdf5/manual\#tth_sEcA}{Download PDF sets (e.g. 5.9.1)} }
  \begin{scriptsize}
   \url{https://lhapdf.hepforge.org/downloads/?f=pdfsets/5.9.1/EPS09LOR_208.LHgrid}
   \url{https://lhapdf.hepforge.org/downloads?f=pdfsets/5.9.1//cteq6ll.LHpdf}\\
@@ -53,7 +53,7 @@
 \begin{footnotesize}
 Put them in (lhapdf path)\textit{/share/lhapdf/PDFsets/}
 \end{footnotesize}
-\end{block}
+\end{exampleblock}
 
 \begin{tiny}
 \href{https://www.jyu.fi/science/en/physics/research/highenergy/urhic/npdfs/eps09}{alternative}
@@ -68,10 +68,10 @@ Put them in (lhapdf path)\textit{/share/lhapdf/PDFsets/}
  LHAPDF\_PATH := (your lhapdf install path)/lib/
  \end{block}
 
- \begin{block}{Modifying your .bashrc or .zshrc}
+ \begin{exampleblock}{Modifying your .bashrc or .zshrc}
  export LD\_LIBRARY\_PATH=/.../lhapdf-5.x.y/lib:\$LD\_LIBRARY\_PATH
  export LHAPATH=/.../lhapdf-5.x.y/share/lhapdf/PDFsets
- \end{block}
+ \end{exampleblock}
 \end{frame}
 
 
@@ -83,6 +83,7 @@ Put them in (lhapdf path)\textit{/share/lhapdf/PDFsets/}
  \item ./jewel-2.2.0-vac $\langle$configuration file$\rangle$
  \item ./jewel-2.2.0-simple $\langle$configuration file$\rangle$
  \item \href{https://arxiv.org/pdf/1311.0048.pdf}{Documentation}
+ \item The log file and output file are specified by the config file.
 \end{itemize}
 
 \begin{alertblock}{Caution}
@@ -103,7 +104,27 @@ If you change physical parameters, delete these files before you run JEWEL again
   \item \href{https://pythia.org/download/pythia6/lutp0613man2.pdf}{Pythia 6 Documentation} (See pages 140, 145, and 195)
  \end{itemize}
 
-%  \begin{co
+ \begin{columns}
+
+  \column{0.4\linewidth}
+  \begin{exampleblock}{Gluons}
+MSEL=0 \\
+MSUB(13)=1\\
+MSUB(68)=1\\
+\phantom{Place holder}
+  \end{exampleblock}
+
+  \column{0.4\linewidth}
+  \begin{block}{Quarks}
+MSEL=0\\
+MSUB(11)=1\\
+MSUB(12)=1\\
+MSUB(53)=1
+  \end{block}
+
+
+ \end{columns}
+
 
 \end{frame}
 
@@ -111,7 +132,18 @@ If you change physical parameters, delete these files before you run JEWEL again
 \section{Data processing using RIVET}
 
 \begin{frame}
- \frametitle{RIVET installation}
+ \frametitle{How to understand HepMC2 ascii format}
+ \begin{itemize}
+  \item \href{http://hepmc.web.cern.ch/hepmc/releases/HepMC2_user_manual.pdf}{Documentation link}
+  \item Reminder to myself: show an example
+  \item Use Rivet
+ \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Rivet installation}
  % mention apptainer vs native install vs docker
 \end{frame}
 

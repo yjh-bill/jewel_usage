@@ -3,6 +3,7 @@
 \usepackage{physics}
 \usepackage{subfig}
 \usepackage{hyperref}
+%\usepackage{verbatim}
 
 \usepackage[utf8]{inputenc}
 \usetheme{Madrid}
@@ -111,7 +112,7 @@ If you change physical parameters, delete these files before you run JEWEL again
 MSEL=0 \\
 MSUB(13)=1\\
 MSUB(68)=1\\
-\phantom{Place holder}
+\phantom{Place holder MSUB}
   \end{exampleblock}
 
   \column{0.4\linewidth}
@@ -139,18 +140,83 @@ MSUB(53)=1
   \item Use Rivet
  \end{itemize}
 
-\end{frame}
+\begin{exampleblock}{Rivet usage}
+	rivet \textit{(hepmc file)} -a \textit{(analysis name)}\\
+	rivet output.hepmc -a MC\_JETS\\
+	\phantom{Placeholder}\\
+	For Jewel outputs, use\\
+	rivet --ignore-beams output.hepmc -a MC\_JETS
+\end{exampleblock}
+
+\end{frame}  
 
 
 \begin{frame}
  \frametitle{Rivet installation}
  % mention apptainer vs native install vs docker
+ \begin{block}{Native install using bootstrap script}
+ 	\begin{scriptsize}
+ 	\url{https://gitlab.com/hepcedar/rivet/-/blob/release-3-1-x/doc/tutorials/installation.md}  \\
+ \end{scriptsize}
+ 	Execute the bootstrap to install rivet and all its dependencies.
+ \end{block}
+However, the recommended way is to use Docker.
+
+\begin{alertblock}{Hoffman2} 
+	\begin{small}
+	On Hoffman2 cluster, due to security concerns, apptainer is used instead of Docker.
+	Apptainer (formerly named Singularity) is compatible with Docker container format.\\
+	\emph{module load apptainer}
+	\end{small}
+\end{alertblock}
+
+\begin{exampleblock}{Use apptainer/docker to install Rivet}
+	   docker pull hepstore/rivet:3.1.4 \\
+	   apptainer pull docker://hepstore/rivet:3.1.4
+\end{exampleblock}
+
 \end{frame}
+
+
 
 \begin{frame}
  \frametitle{Using apptainer or docker}
+ \begin{block}{Docker}
+ 
+   	docker run -i --rm hepstore/rivet:3.X.Y (command)
+   	
+   	docker run -i  --rm  -v \$PWD:\$PWD -w \$PWD -u \`{}id -u \$USER\`{}:\`{}id -g\`{} hepstore/rivet:3.1.4 rivet output.hepmc -a MC\_JETS
+
+%   	To make container read your files: \begin{footnotesize}-v \$PWD:\$PWD -w \$PWD -u \`{}id -u \$USER\`{}:\`{}id -g\`{} \end{footnotesize}
+ \end{block}
+
+\begin{exampleblock}{apptainer}
+	apptainer exec (container image path)/rivet\_3.X.Y.sif (command)
+	apptainer exec (path...)/rivet\_3.1.4.sif rivet output.hepmc -a MC\_JETS
+\end{exampleblock}
+
 \end{frame}
 
+
+\begin{frame}
+	\frametitle{To make life easier}
+	\begin{block}{\href{https://gitlab.com/hepcedar/rivet/-/blob/release-3-1-x/doc/tutorials/docker.md\#running-rivet-through-docker}{Docker}}
+%		alias rivet=\textquotesingle docker run -i  --rm  -u \`{}id -u \$USER\`{}:`{}id -g\`{}  -v \$PWD:\$PWD -w \$PWD  hepstore/rivet:X.Y.Z rivet\textquotesingle\\
+%		alias rivet-mkanalysis=\textquotesingle docker run -i  --rm  -u \`{}id -u \$USER\`{}:`{}id -g\`{}  -v \$PWD:\$PWD -w \$PWD  hepstore/rivet:X.Y.Z rivet-mkanalysis\textquotesingle
+%		alias rivet-buildplugin=\textquotesingle docker run -i  --rm  -u \`{}id -u \$USER\`{}:`{}id -g\`{}  -v \$PWD:\$PWD -w \$PWD  hepstore/rivet:X.Y.Z rivet-buildplugin\textquotesingle
+%		alias rivet-mkhtml=\textquotesingle docker run -i  --rm  -u \`{}id -u \$USER\`{}:`{}id -g\`{}  -v \$PWD:\$PWD -w \$PWD  hepstore/rivet:X.Y.Z rivet-mkhtml\textquotesingle
+%		alias yodamerge=\textquotesingle docker run -i --rm  -u \`{}id -u \$USER\`{}:`{}id -g\`{}  -v \$PWD:\$PWD -w \$PWD  hepstore/rivet:X.Y.Z yodamerge\textquotesingle
+\includegraphics[width=\linewidth]{dockerAlias.png}
+		
+	\end{block}
+
+	\begin{exampleblock}{Apptainer}
+		alias rivet=\textquotesingle apptainer exec \textit{(path)}/rivet\_3.X.Y.sif rivet\textquotesingle \\
+		alias rivet-mkhtml=\textquotesingle apptainer exec \textit{(path)}/rivet\_3.X.Y.sif rivet-mkhtml\textquotesingle \\
+		alias rivet-build=\textquotesingle apptainer exec \textit{(path)}/rivet\_3.X.Y.sif rivet-build\textquotesingle \\
+		alias yodamerge=\textquotesingle apptainer exec \textit{(path)}/rivet\_3.X.Y.sif yodamerge\textquotesingle \\
+	\end{exampleblock}
+\end{frame}
 % if have time, talk a little bit more about native install
 
 % mention jewel mkfifo

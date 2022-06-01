@@ -222,10 +222,19 @@ However, the recommended way is to use Docker.
 % mention jewel mkfifo
 \begin{frame}
  \frametitle{Using named pipe}
+ The HepMC file can get really large.
+ 
+ Use named pipe to save space.
+ \begin{exampleblock}{mkfifo}
+ 	\# suppose the output name is output.hepmc \\
+ 	mkfifo output.hepmc\\
+ 	./jewel-2.2.0-simple configuration.dat \& \\
+ 	rivet --ignore-beams output.hepmc -a \textit{Some\_analysis}
+ \end{exampleblock}
 \end{frame}
 
 
-\section{Troubleshooting}
+%\section{Troubleshooting}
 
 \end{document}
 

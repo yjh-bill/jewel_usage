@@ -36,7 +36,7 @@
 
  \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\linewidth]{dependencies.png}
+  \href{https://jewel.hepforge.org/gettingstarted.html}{\includegraphics[width=0.9\linewidth]{dependencies.png}}
  \end{figure}
 
  \begin{block}{Download and Install LHAPDF5}
@@ -88,7 +88,7 @@ Put them in (lhapdf path)\textit{/share/lhapdf/PDFsets/}
 \end{itemize}
 
 \begin{alertblock}{Caution}
-Watch out for xsecs.dat, pdf.dat, and splitint.
+Watch out for xsecs.dat, pdf.dat, and splitint.dat
 
 If you change physical parameters, delete these files before you run JEWEL again.
 \end{alertblock}
@@ -198,6 +198,8 @@ However, the recommended way is to use Docker.
 	apptainer exec (container image path)/rivet\_3.X.Y.sif (command)
 	apptainer exec (path...)/rivet\_3.1.4.sif rivet output.hepmc -a MC\_JETS
 \end{exampleblock}
+
+Reminder to self: show how to use apptainer
 
 \end{frame}
 
